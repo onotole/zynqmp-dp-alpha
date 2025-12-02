@@ -1,0 +1,30 @@
+From d449625388b761a11ed31530a81358ead6e53d69 Mon Sep 17 00:00:00 2001
+From: Anatoliy Klymenko <anatoliy.klymenko@amd.com>
+Date: Mon, 1 Dec 2025 19:43:24 -0800
+Subject: [PATCH] zynqmp-dpsub: Don't enable global alpha
+
+*** DEMO ONLY. DO NOT MERGE ***
+
+Don't enable global alpha.
+
+Signed-off-by: Anatoliy Klymenko <anatoliy.klymenko@amd.com>
+---
+ drivers/gpu/drm/xlnx/zynqmp_kms.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/drivers/gpu/drm/xlnx/zynqmp_kms.c b/drivers/gpu/drm/xlnx/zynqmp_kms.c
+index 02f3a7d78cf8..b2a80a903438 100644
+--- a/drivers/gpu/drm/xlnx/zynqmp_kms.c
++++ b/drivers/gpu/drm/xlnx/zynqmp_kms.c
+@@ -119,7 +119,7 @@ static void zynqmp_dpsub_plane_atomic_update(struct drm_plane *plane,
+ 	zynqmp_disp_layer_update(layer, new_state);
+ 
+ 	if (plane->index == ZYNQMP_DPSUB_LAYER_GFX)
+-		zynqmp_disp_blend_set_global_alpha(dpsub->disp, true,
++		zynqmp_disp_blend_set_global_alpha(dpsub->disp, false,
+ 						   plane->state->alpha >> 8);
+ 
+ 	/*
+-- 
+2.43.0
+
